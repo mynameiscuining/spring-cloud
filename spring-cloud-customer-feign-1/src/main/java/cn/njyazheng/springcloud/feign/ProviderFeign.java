@@ -1,13 +1,13 @@
 package cn.njyazheng.springcloud.feign;
 
+import cn.njyazheng.springcloud.config.CustomFeignConfig;
 import cn.njyazheng.springcloud.domain.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-@FeignClient("provider")
+//多个接口,name重名报错
+@FeignClient(name = "provider")
 public interface ProviderFeign {
     @GetMapping("/get/name/{id}")
     //此处@PathVariable必须加value
