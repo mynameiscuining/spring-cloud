@@ -21,6 +21,11 @@ eureka:
     prefer-ip-address: true
     #注册列status显示的名字
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+    #标准元数据: hostname, IP address, port numbers, the status page, and health check
+    #自定义元数据
+    metadata-map:
+      zone: adc-1 #这个自带的配置zone,eureka可以理解
+      custom: 456 #这个eureka不可以理解,但不影响
   client:
     #此处基于starter-actuator
     healthcheck:
