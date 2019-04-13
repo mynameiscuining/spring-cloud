@@ -1,13 +1,11 @@
-package cn.njyazheng.springcloud.provider;
+package cn.njyazheng.springcloud.custom;
 
 import cn.njyazheng.springcloud.domain.User;
-import cn.njyazheng.springcloud.feign.CustomFeign;
 import cn.njyazheng.springcloud.feign.ProviderFeign;
 import cn.njyazheng.springcloud.feign.UrlFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
