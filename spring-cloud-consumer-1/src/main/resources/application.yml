@@ -9,6 +9,7 @@ provider:
 eureka:
   instance:
     hostname: custom-localhost-1
+    #hostname: {HOST_NAME}
     # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒，如果要迅速获取服务注册状态，可以缩小该值
     #生产环境建议默认值
     #You can change the period by setting eureka.instance.leaseRenewalIntervalInSeconds.
@@ -33,6 +34,9 @@ eureka:
     register-with-eureka: true
     serviceUrl:
       defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7402/eureka
+      #高可用集群
+      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7402/eureka,http://${spring.security.user.name}:${spring.security.user.password}@localhost:7406/eureka
+
 
 spring:
   application:

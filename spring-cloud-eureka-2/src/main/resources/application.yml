@@ -1,5 +1,5 @@
 server:
-  port: 7402
+  port: 7406
 #eureka认证设置
 #需要添加security-starter,eureka2.0要禁用csrf
 spring:
@@ -12,22 +12,22 @@ spring:
 
 eureka:
   instance:
-    hostname: eureka-localhost-1
+    hostname: eureka-localhost-2
     #hostname: {HOST_NAME}
   client:
-    register-with-eureka: false #  默认为 true。设为 false，仅作为服务中心，不作为服务客户端。
-    #register-with-eureka: true #eureka server 集群高可用,设置为true,单机作为server时不用开启
-    fetch-registry: false # 默认为true。设为false，不从服务中心检索注册的服务。
-    #fetch-registry: true #eureka server 集群高可用,设置为true,单机作为server时不用开启
+    #register-with-eureka: false #  默认为 true。设为 false，仅作为服务中心，不作为服务客户端。
+    register-with-eureka: true #eureka server 集群高可用,设置为true,单机作为server时不用开启
+    #fetch-registry: false # 默认为true。设为false，不从服务中心检索注册的服务。
+    fetch-registry: true #eureka server 集群高可用,设置为true,单机作为server时不用开启
     service-url:
       #暴露给客户端的:defaultZone
       #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
       #暴露给客户端的:defaultZone
       #认证
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
+      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
       #高可用(集群),要注册到另一个eureka server
       #要注册的另一个eureka server的defaultZone,如果多个defaultZone用逗号隔开
-      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7406/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7402/eureka
   server:
     eviction-interval-timer-in-ms: 60000 #清理无效节点间隔（单位毫秒，默认是60*1000）
     enable-self-preservation: true # 默认为true。设为false，关闭自我保护。
