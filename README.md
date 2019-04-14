@@ -101,8 +101,8 @@ feign.compression.response.enabled=false
 feign.compression.request.mime-type=text/xml,application/xml,application/json  
 #设置请求内容的最小阀值，默认值为2048,配置压缩数据大小的下限  
 feign.compression.request.min-request-size=2048  
-#eureka server环境配置自定义,可在eureka server仪表盘显示  
-eureka.environment=prod or dev  
+#eureka server环境配置自定义(prod or dev),可在eureka server仪表盘显示 
+eureka.environment=test
 #eureka server配置datacenter,可在eureka server仪表盘显示  
 eureka.datacenter=default  
 
