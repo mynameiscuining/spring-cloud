@@ -10,7 +10,7 @@ eureka:
   instance:
     hostname: provicer-localhost-2
     #hostname=${HOST_NAME}
-    # 表示eureka client间隔多久去拉取服务注册信息，默认为30秒，如果要迅速获取服务注册状态，可以缩小该值
+    # 表示eureka client发送心跳给server端的频率
     #生产环境建议默认值
     #You can change the period by setting eureka.instance.leaseRenewalIntervalInSeconds.
     #Setting it to a value of less than 30 speeds up the process of getting clients connected to other services.
