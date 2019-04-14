@@ -52,7 +52,9 @@ eureka.instance.secure-virtual-host-name=unknown
 #设置使用http的虚拟的主机名  
 eureka.instance.virtual-host-name=unknown  
 #集群对等体状态刷新的时间,单位毫秒  
-eureka.server.peer-eureka-status-refresh-time-interval-ms=0  
+eureka.server.peer-eureka-status-refresh-time-interval-ms=0 
+#开启自我保护  
+eureka.server.enable-self-preservation=true  
 #设置为true开启请求压缩。  
 feign.compression.request.enabled=false  
 #设置为true开户响应压缩。  
@@ -60,4 +62,10 @@ feign.compression.response.enabled=false
 #支持压缩的类型列表  
 feign.compression.request.mime-type=text/xml,application/xml,application/json  
 #设置请求内容的最小阀值，默认值为2048,配置压缩数据大小的下限  
-feign.compression.request.min-request-size=2048  
+feign.compression.request.min-request-size=2048
+#eureka server环境配置自定义,可在eureka server仪表盘显示
+eureka.environment=prod or dev
+#eureka server配置datacenter,可在eureka server仪表盘显示
+eureka.datacenter=default
+
+  

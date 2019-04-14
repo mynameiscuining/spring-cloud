@@ -22,8 +22,11 @@ eureka:
     lease-expiration-duration-in-seconds: 90
     #使用IP进行服务注册
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
     #注册列status显示的名字
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+    #显示IP
+    #instance-id:${spring.cloud.client.ipAddress}:${server.port}
+
   client:
     #此处基于starter-actuator
     healthcheck:
