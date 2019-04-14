@@ -6,7 +6,7 @@ logging:
 eureka:
   instance:
     hostname: custom-ribbon-localhost-1
-    #hostname: {HOST_NAME}
+    #hostname: ${HOST_NAME}
     # 表示eureka client发送心跳给server端的频率
     #生产环境建议默认值
     #You can change the period by setting eureka.instance.leaseRenewalIntervalInSeconds.
