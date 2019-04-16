@@ -14,12 +14,14 @@ import org.springframework.context.annotation.FilterType;
  */
 @SpringBootApplication
 //开启feign
+//If Hystrix is on the classpath and feign.hystrix.enabled=true,
+// Feign will wrap all methods with a circuit breaker
 @EnableFeignClients
 @ComponentScan(excludeFilters={@ComponentScan.Filter(type = FilterType.ANNOTATION,value = ComponentScanExclude.class)})
-public class ConsumerFeignApplication1 {
+public class ConsumerFeignHystrixApplication1 {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerFeignApplication1.class, args);
+		SpringApplication.run(ConsumerFeignHystrixApplication1.class, args);
 	}
 
 }

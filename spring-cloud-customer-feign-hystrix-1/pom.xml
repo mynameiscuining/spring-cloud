@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-cloud-customer-feign-1</artifactId>
+    <artifactId>spring-cloud-customer-feign-hystrix-1</artifactId>
 
     <dependencies>
-       <!-- feign 不用引入ribbon的依赖 -->
+        <!-- feign 不用引入ribbon,hystrix的依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>

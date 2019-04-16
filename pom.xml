@@ -12,6 +12,7 @@
         <module>spring-cloud-customer-feign-1</module>
         <module>spring-cloud-eureka-2</module>
         <module>spring-cloud-customer-ribbon-hystrix-1</module>
+        <module>spring-cloud-customer-feign-hystrix-1</module>
     </modules>
     <parent>
         <!-- springboot -->
