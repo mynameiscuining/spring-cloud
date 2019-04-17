@@ -1,6 +1,7 @@
 package cn.njyazheng.springcloud.custom;
 
 import cn.njyazheng.springcloud.domain.User;
+import cn.njyazheng.springcloud.feign.DisableHystrixWithSingleFeign;
 import cn.njyazheng.springcloud.feign.ProviderFeign;
 import cn.njyazheng.springcloud.feign.UrlFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class ServicerConsumer {
     private ProviderFeign providerFeign;
     @Autowired
     private UrlFeign urlFeign;
+
+    @Autowired
+    private DisableHystrixWithSingleFeign disableHystrixWithSingleFeign;
 
     @GetMapping("/get/name/{id}")
     public String getName(@PathVariable String id){
@@ -36,4 +40,13 @@ public class ServicerConsumer {
         return  providerFeign.getUser(1,"ccc");
     }
 
+    @GetMapping("/provider3/user")
+    public User getName2(){
+        return  disableHystrixWithSingleFeign.getUser(1,"ccc");
+    }
+
+    @GetMapping("/provider3/name/{id}")
+    public String getName4(@PathVariable String id){
+        return  disableHystrixWithSingleFeign.getName(id);
+    }
 }
