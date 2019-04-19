@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //多个接口,name重名报错
-//Feign支持hystrix,使用fallbacl属性
+//Feign支持hystrix,使用fallback属性
+//fallbackFactory和fallback冲突,不能两个同时用
 @FeignClient(name = "provider",fallback =ProviderFeignFallback.class)
 public interface ProviderFeign {
     @GetMapping("/get/name/{id}")

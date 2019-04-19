@@ -4,7 +4,7 @@ import cn.njyazheng.springcloud.hystrix.ProviderFeign2FallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
+//fallbackFactory和fallback冲突,不能两个同时用
 @FeignClient(name = "provider-2",fallbackFactory = ProviderFeign2FallbackFactory.class)
 public interface ProviderFeign2 {
     @GetMapping("/get/name/{id}")

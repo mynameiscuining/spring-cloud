@@ -1,0 +1,11 @@
+server:
+  port: 7410
+spring:
+  security:
+    user:
+      name: cuining
+      password: rootadmin
+  application:
+    name: hystrix-dashboard-1
+
+
