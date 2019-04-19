@@ -9,11 +9,8 @@ public class ProviderFeign2FallbackFactory implements FallbackFactory<ProviderFe
 
     @Override
     public ProviderFeign2 create(Throwable throwable) {
-        return new ProviderFeign2() {
-            @Override
-            public String getName(String id) {
-                return throwable.toString();
-            }
+        return id -> {
+            return throwable.toString();
         };
     }
 }
