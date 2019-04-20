@@ -9,6 +9,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 //(1)spring-boot-starter-actuator(2)spring-cloud-starter-netflix-hystrix
 //并且开启@EnableCircuitBreaker
 //一定要有请求,仪表盘才会显示
+//访问:/hystrix
 @EnableHystrixDashboard
 public class HystrixDashboardApplication1 {
 	public static void main(String[] args) {

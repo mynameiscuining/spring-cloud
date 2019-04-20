@@ -1,0 +1,74 @@
+server:
+  port: 7412
+logging:
+  level:
+     root: info
+eureka:
+  instance:
+    hostname: custom-ribbon-hystrix-localhost-2
+    #hostname: ${HOST_NAME}
+    # 表示eureka client发送心跳给server端的频率
+    #生产环境建议默认值
+    #You can change the period by setting eureka.instance.leaseRenewalIntervalInSeconds.
+    #Setting it to a value of less than 30 speeds up the process of getting clients connected to other services.
+    #In production, it is probably better to stick with the default,
+    #because of internal computations in the server that make assumptions about the lease renewal
+    lease-renewal-interval-in-seconds: 5
+    # 表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。
+    # 默认为90秒
+    # 如果该值太大，则很可能将流量转发过去的时候，该instance已经不存活了。
+    # 如果该值设置太小了，则instance则很可能因为临时的网络抖动而被摘除掉。
+    # 该值至少应该大于 leaseRenewalIntervalInSeconds
+    lease-expiration-duration-in-seconds: 15
+    #使用IP进行服务注册
+    prefer-ip-address: true
+    #注册列status显示的名字
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
+    #显示IP
+    #instance-id:${spring.cloud.client.ipAddress}:${server.port}
+
+  client:
+    #此处基于starter-actuator
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7402/eureka
+      #高可用集群
+      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:7402/eureka,http://${spring.security.user.name}:${spring.security.user.password}@localhost:7406/eureka
+
+
+spring:
+  application:
+    name: custom-ribbon-hystrix-2
+  security:
+    user:
+      name: cuining
+      password: rootadmin
+
+
+#Actuator监控管理,暴露所有端点,需要添加starter-actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+info:
+  name: custom-ribbon-hystrix-2
+  port: ${server.port}
+  hostname: ${eureka.instance.hostname}
+
+##ribbon配置
+##其中provider为服务提供者的spring.application.name
+#custom:
+#  ribbon:
+#   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+##脱离eureka使用ribbon
+##(1)在不存在eureka的情况下
+#<ribbonname>:
+#  ribbon:
+#    listOfServers: localhost:7400,localhost:7403
+##(2)存在的情况下要禁止eureka
+#ribbon:
+#  eureka:
+#   enabled: false
