@@ -33,7 +33,17 @@ A作为服务提供者，B为A的服务消费者，C和D是B的服务消费者�
 (1) 监控 总共请求多少次，有多少次失败   假设失败率达倒10% 断路器打开  
 (2) 断路器的状态  
 (3) 分流  
-(4) 自我修复（断路器状态的切换）  
+(4) 自我修复（断路器状态的切换）
+
+
+Zuul
+===
+**简要**
+Zuul is a JVM-based router and server-side load balancer from Netflix;  
+
+The default Hystrix isolation pattern (ExecutionIsolationStrategy) for all   
+routes is SEMAPHORE.zuul.ribbonIsolationStrategy can be changed to THREAD   
+if that isolation pattern is preferred.    
 
 
 eureka常用配置(配置的赋值为默认值)
