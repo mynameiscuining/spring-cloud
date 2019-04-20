@@ -38,7 +38,7 @@ A作为服务提供者，B为A的服务消费者，C和D是B的服务消费者�
 
 Zuul
 ===
-**简要**
+**简要**  
 Zuul is a JVM-based router and server-side load balancer from Netflix;  
 
 The default Hystrix isolation pattern (ExecutionIsolationStrategy) for all   
