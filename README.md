@@ -45,7 +45,7 @@ The default Hystrix isolation pattern (ExecutionIsolationStrategy) for all
 routes is SEMAPHORE.  zuul.ribbonIsolationStrategy can be changed to THREAD   
 if that isolation pattern is preferred.  
 
-he Zuul starter does not include a discovery client, so, for routes based  
+The Zuul starter does not include a discovery client, so, for routes based  
  on service IDs, you need to provide one of those on the classpath as well  
   (Eureka is one choice).    
 
