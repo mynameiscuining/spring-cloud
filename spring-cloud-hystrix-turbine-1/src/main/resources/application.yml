@@ -56,15 +56,33 @@ management:
   endpoint:
     health:
       show-details: always
+
 info:
   name: hystrix-turbine-1
   port: ${server.port}
   hostname: ${eureka.instance.hostname}
 
-# 1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称
+#By default, Turbine looks for the /hystrix.stream endpoint on a registered instance by looking up
+#its hostName and port entries in Eureka and then appending /hystrix.stream to it. If the
+#instance’s metadata contains management.port, it is used instead of the port value for
+#the /hystrix.stream endpoint. By default, the metadata entry called management.port is equal to the
+# management.port configuration property. It can be overridden though with following configuration:
+#意思为消费者端,并非turbine端配置:
+#management:
+#  server:
+#    port:
+#eureka:
+#  instance:
+#    metadata-map:
+#      management.port: ${management.server.port:8081}
 
+
+
+# 1. clusterNameExpression指定集群名称，默认表达式appName；此时：turbine.aggregator.clusterConfig需要配置想要监控的应用名称
 # 2. 当clusterNameExpression:default时，turbine.aggregator.clusterConfig可以不写，因为默认就是default
 # 3. 当clusterNameExpression:metadata['cluster']时，假设想要监控的应用配置了eureka.instance.metadata-map.cluster: ABC，则需要配置，同时turbine.aggregator.clusterConfig: ABC
+
+
 
 #集群配置
 #http://192.168.217.1:7411/turbine.stream?cluster=SPRING-CLOUD-CUSTOMER-RIBBON-HYSTRIX-1
