@@ -42,7 +42,7 @@ Zuul
 Zuul is a JVM-based router and server-side load balancer from Netflix;  
 
 The default Hystrix isolation pattern (ExecutionIsolationStrategy) for all   
-routes is SEMAPHORE.zuul.ribbonIsolationStrategy can be changed to THREAD   
+routes is SEMAPHORE.  zuul.ribbonIsolationStrategy can be changed to THREAD   
 if that isolation pattern is preferred.    
 
 
