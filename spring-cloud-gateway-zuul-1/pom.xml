@@ -22,7 +22,10 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <!-- 健康检测,检查 -->
-        <!-- 此处用于routes端点监控 -->
+        <!-- 此处用于routes和Filters端点监控 -->
+        <!-- http://192.168.217.1:7413/actuator/routes/details -->
+        <!-- http://192.168.217.1:7413/actuator/routes -->
+        <!-- http://192.168.217.1:7413/actuator/filters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

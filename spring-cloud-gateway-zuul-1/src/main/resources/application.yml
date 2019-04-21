@@ -63,7 +63,7 @@ info:
 
 #(0)
 #默认行为/appname
-zuul:
+#zuul:
   #只有全局行为和ignored-headers连用,作用同sensitive-headers相同
   #要加如依赖:spring-boot-starter-security
   #false:将会将头部信息传递
@@ -147,3 +147,19 @@ zuul:
 #testname:
 #  ribbon:
 #    listOfServers: http://192.168.217.1:7400,http://192.168.217.1:7403
+
+#(6)本地转发
+#zuul:
+#  routes:
+#    first:
+#      path: /first/**
+#      url: http://first.example.com
+#    second:
+#      path: /second/**
+#      url: forward:/second
+#    third:
+#      path: /third/**
+#      url: forward:/3rd
+#    legacy:
+#      path: /**
+#      url: http://legacy.example.com
