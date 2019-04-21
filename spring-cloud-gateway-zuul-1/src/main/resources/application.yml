@@ -47,6 +47,8 @@ spring:
       password: rootadmin
 
 
+
+
 #Actuator监控管理,暴露所有端点,需要添加starter-actuator
 management:
   endpoints:
@@ -163,3 +165,25 @@ zuul:
 #    legacy:
 #      path: /**
 #      url: http://legacy.example.com
+
+#(7)文件上传,对于小文件,可以直接通过代理上传
+#对于大文件
+#第一种方式:如下配置
+#spring:
+# servlet:
+#    multipart:
+#     #默认1Mb
+#      max-file-size: 1Mb
+#      #默认10Mb
+#      max-request-size: 10Mb
+#第二种方式通过/zuul/*绕过DispatcherServlet
+#比如可以直接写成 http://localhost:7414/zuul/<appname>/url
+#并且对于大文件把超时时间设置大些
+#代理用hystrix封装
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+#用ribbon做负载
+#ribbon:
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
+
+
