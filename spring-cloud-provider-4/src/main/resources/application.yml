@@ -1,0 +1,11 @@
+server:
+  port: 7414
+logging:
+  level:
+     root: info
+
+auth: false
+
+spring:
+  application:
+    name: provider-4

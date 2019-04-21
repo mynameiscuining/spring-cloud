@@ -61,11 +61,89 @@ info:
   port: ${server.port}
   hostname: ${eureka.instance.hostname}
 
-
+#(0)
+#默认行为/appname
 zuul:
-  #所有的都不反向代理,只有配置zuul.routes.<appname>的做反向代理
-  #此处是忽略的appname,多个用逗号隔开
-  ignoredServices: '*'
+  #只有全局行为和ignored-headers连用,作用同sensitive-headers相同
+  #要加如依赖:spring-boot-starter-security
+  #false:将会将头部信息传递
+  #true:将会会忽略头部,不传递
+  #ignore-security-headers: false
+  #默认springsecurity会初始化头部:public static final List<String> SECURITY_HEADERS = Arrays.asList("Pragma", "Cache-Control", "X-Frame-Options", "X-Content-Type-Options", "X-XSS-Protection", "Expires");
+  #ignored-headers: Pragma, Cache-Control, X-Frame-Options, X-Content-Type-Options, X-XSS-Protection, Expires
+#   #全局
+#   #默认值 private Set<String> sensitiveHeaders = new LinkedHashSet(Arrays.asList("Cookie", "Set-Cookie", "Authorization"));
+#  sensitive-headers: Cookie,Set-Cookie,Authorization
+#  #配置在这一层代表所有的,全局
+#  #代理访问变为/api/appname
+#  prefix: /api
+#  #false /api/appname会剥离,
+#  #true  /api/appname不会剥离掉.一同代理到微服务
+#  strip-prefix: false
+  #
+#(1)
+#zuul:
+#  #所有的都不反向代理,只有配置zuul.routes.<appname>的做反向代理
+#  #此处是忽略的appname,多个用逗号隔开
+#  ignoredServices: '*'
+#   #对于一些比较敏感的url不做代理,ant风格的匹配
+#  ignoredPatterns: /**/admin/**
+#  routes:
+#  #provider 为application.name,此处用来代理时修改默认的application.name,取别名作为映射
+#    provider: /provider-mapping-url/**
+
+#(1.1)
+#If you need your routes to have their order preserved, you need to
+#use a YAML file, as the ordering is lost when using a properties file.
+#这个地方的配置使用yml才有效,使用properties无效
+#zuul:
+#  routes:
+#    #对于appname为user的映射为/myusers/**
+#    #对于非user/映射为/**
+#    users:
+#      path: /myusers/**
+#    legacy:
+#      path: /**
+#(2)
+#细粒度的配置,指定属性
+zuul:
   routes:
-  #provider 为application.name,此处用来代理时修改默认的application.name,取别名
-    provider: /providertest/**
+    #这个属性可以随便写,此处是user不起作用,因为存在serviceId,也可以是其他任意字符串,如果不存在serviceId,将认为user为appname
+     users:
+      #映射url,用作反向代理
+      path: /provider-mapping-url/**
+      #http的header信息一些敏感的信息不会代理出去
+      #对于局部优先级较高
+      #默认值 private Set<String> sensitiveHeaders = new LinkedHashSet(Arrays.asList("Cookie", "Set-Cookie", "Authorization"));
+       #You can also set sensitive headers, by setting zuul.sensitiveHeaders.
+       #If sensitiveHeaders is set on a route, it overrides the global sensitiveHeaders setting.
+      sensitive-headers: Cookie,Set-Cookie,Authorization
+      #显示设置为空,将所有的头部信息代理出去
+      #sensitive-headers:
+      #配置方式一: 此处是注册到eureka的appname
+      serviceId: provider
+      #代表局部
+      #是剥离 /provider-mapping-url
+      #strip-prefix: false
+      #配置方式二:指定url,使用url请求不会进入断路器HystrixCommand,也不能使用ribbon进行负载均衡,此时就不需要指定testname
+     #非eureka和eureka的情况都能使用
+     # url: http://192.168.217.1:7414
+#(3)
+#集群负载使用eureka,配置如(2),负载集群的应用保证appname相同,默认负载策略:轮询,更改策略见ribbon项目
+
+#(4)
+#集群负载在非eureka的情况下
+#zuul:
+#  routes:
+#    users:
+#      path: /provider-mapping-url/**
+#      #非eureka的情况下,取值自定义appname
+#      serviceId: testname
+##模拟非eureka,此时eureka就不能使用,需要注意
+#ribbon:
+#  eureka:
+#    enabled: false
+##非eureka的情况下,自定义appname
+#testname:
+#  ribbon:
+#    listOfServers: http://192.168.217.1:7400,http://192.168.217.1:7403

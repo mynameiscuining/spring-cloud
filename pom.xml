@@ -18,6 +18,7 @@
         <module>spring-cloud-hystrix-turbine-1</module>
         <module>spring-cloud-customer-ribbon-hystrix-2</module>
         <module>spring-cloud-gateway-zuul-1</module>
+        <module>spring-cloud-provider-4</module>
     </modules>
     <parent>
         <!-- springboot -->

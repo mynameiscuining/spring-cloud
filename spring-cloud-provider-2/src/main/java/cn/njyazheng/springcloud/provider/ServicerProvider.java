@@ -45,7 +45,7 @@ public class ServicerProvider {
     @GetMapping("/user")
     public User getUser(Integer id,String name){
         System.out.println(id+":"+name);
-        return new User(2,"cuining");
+        return new User(2,"cuining-provider-2");
     }
 
 }
