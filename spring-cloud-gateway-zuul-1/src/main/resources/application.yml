@@ -187,3 +187,9 @@ zuul:
 #  ReadTimeout: 60000
 
 
+#(8)
+#禁用zuul的过滤器
+#zuul.<SimpleClassName>.<filterType>.disable=true.
+#例如禁用org.springframework.cloud.netflix.zuul.filters.post.SendResponseFilter
+#zuul.SendResponseFilter.post.disable=true
+
