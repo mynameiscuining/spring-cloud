@@ -6,6 +6,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.EnableZuulServer;
 
 @SpringBootApplication
+//经过zuul的请求都被hystrix包裹,所以具有断路器的功能
+
 //默认使用的是Apache HTTP Client
 //The default HTTP client used by Zuul is now backed by the Apache HTTP Client instead
 // of the deprecated Ribbon RestClient. To use RestClient or okhttp3.OkHttpClient, set
