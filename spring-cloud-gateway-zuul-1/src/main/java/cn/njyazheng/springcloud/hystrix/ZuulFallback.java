@@ -17,6 +17,8 @@ public class ZuulFallback implements FallbackProvider {
     public String getRoute() {
         //serviceId或appname
         return "provider";
+        //所有的route
+        //return "*";
     }
 
     @Override

@@ -47,8 +47,26 @@ if that isolation pattern is preferred.
 
 The Zuul starter does not include a discovery client, so, for routes based  
  on service IDs, you need to provide one of those on the classpath as well  
-  (Eureka is one choice).    
-
+  (Eureka is one choice).   
+ **重定向**  
+ Rewriting the Location header
+ If Zuul is fronting a web application, you may need to re-write the Location  
+ header when the web application redirects through a HTTP status code of 3XX.  
+ Otherwise, the browser redirects to the web application’s URL instead of the   
+ Zuul URL. You can configure a LocationRewriteFilter Zuul filter to re-write   
+ the Location header to the Zuul’s URL. It also adds back the stripped global   
+ and route-specific prefixes. The following example adds a filter by using a   
+Spring Configuration file:  
+_import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;  
+...  
+@Configuration  
+@EnableZuulProxy  
+public class ZuulConfig {  
+    @Bean  
+    public LocationRewriteFilter locationRewriteFilter() {  
+        return new LocationRewriteFilter();  
+    }  
+}_  
 
 eureka常用配置(配置的赋值为默认值)
 ===

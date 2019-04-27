@@ -194,3 +194,7 @@ zuul:
 #例如禁用org.springframework.cloud.netflix.zuul.filters.post.SendResponseFilter
 #zuul.SendResponseFilter.post.disable=true
 
+#(9)
+#设置时间超时
+#If Zuul uses service discovery, you need to configure these timeouts with the ribbon.ReadTimeout and ribbon.SocketTimeout Ribbon properties.
+#If you have configured Zuul routes by specifying URLs, you need to use zuul.host.connect-timeout-millis and zuul.host.socket-timeout-millis
