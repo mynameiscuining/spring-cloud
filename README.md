@@ -57,7 +57,7 @@ The Zuul starter does not include a discovery client, so, for routes based
  the Location header to the Zuul’s URL. It also adds back the stripped global   
  and route-specific prefixes. The following example adds a filter by using a   
 Spring Configuration file:  
-_import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;  
+_<span style="color:blue">import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;  
 ...  
 @Configuration  
 @EnableZuulProxy  
@@ -66,7 +66,7 @@ public class ZuulConfig {
     public LocationRewriteFilter locationRewriteFilter() {  
         return new LocationRewriteFilter();  
     }  
-}_  
+}</span>_  
 
 eureka常用配置(配置的赋值为默认值)
 ===
