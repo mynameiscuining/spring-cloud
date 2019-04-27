@@ -67,6 +67,21 @@ public class ZuulConfig {
         return new LocationRewriteFilter();  
     }  
 }_    
+**设置支持跨域访问**
+Enabling Cross Origin Requests  
+By default Zuul routes all Cross Origin requests (CORS) to the services. If you  
+want instead Zuul to handle these requests it can be done by providing custom   
+WebMvcConfigurer bean:
+_@Bean  
+public WebMvcConfigurer corsConfigurer() {  
+    return new WebMvcConfigurer() {  
+        public void addCorsMappings(CorsRegistry registry) {  
+            registry.addMapping("/path-1/**")  
+                    .allowedOrigins("http://allowed-origin.com")  
+                    .allowedMethods("GET", "POST");  
+        }  
+    };  
+}_  
 **zuul过滤器**   
 1.pre：此种过滤器在请求被路由之前执行，显然这种过滤器可以用来过滤请求（白黑名单）、安全验证等；  
 2.routing：此种过滤器复制将请求路由到具体的微服务上；  
