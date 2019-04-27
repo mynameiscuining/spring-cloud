@@ -71,7 +71,7 @@ public class ZuulConfig {
 Enabling Cross Origin Requests  
 By default Zuul routes all Cross Origin requests (CORS) to the services. If you  
 want instead Zuul to handle these requests it can be done by providing custom   
-WebMvcConfigurer bean:
+WebMvcConfigurer bean:  
 _@Bean  
 public WebMvcConfigurer corsConfigurer() {  
     return new WebMvcConfigurer() {  
