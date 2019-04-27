@@ -66,7 +66,12 @@ public class ZuulConfig {
     public LocationRewriteFilter locationRewriteFilter() {  
         return new LocationRewriteFilter();  
     }  
-}_  
+}_    
+**zuul过滤器**   
+1.pre：此种过滤器在请求被路由之前执行，显然这种过滤器可以用来过滤请求（白黑名单）、安全验证等；  
+2.routing：此种过滤器复制将请求路由到具体的微服务上；  
+3.post：此种过滤器在请求被路由到微服务之后执行，可以用来统计用户行为、响应客户端等；  
+4.error：如果上面三种过滤器发生了错误，则执行此过滤器  
 
 eureka常用配置(配置的赋值为默认值)
 ===
