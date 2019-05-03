@@ -1,0 +1,35 @@
+server:
+  port: 7417
+spring:
+  application:
+    name: conig-server-1
+  #配置微服务的配置仓库
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mynameiscuining/config-repo
+          #服务器可以配置为在启动时克隆存储库
+          #此处是全局的
+          #clone-on-start: true
+          #如果本地的config是dirty,就会强制拉去,设置为true
+          #此处是全局的
+          #force-pull: false
+          repos:
+            config-repo-2: https://github.com/mynameiscuining/config-repo-2
+            config-repo-3:
+              #匹配模式:application/env,如果依次往下找不到,就会使用第一个仓库的默认配置
+              pattern: config-repo*/dev*,config-repo*/test*
+              uri: https://github.com/mynameiscuining/config-repo-3
+              #服务器可以配置为在启动时克隆存储库
+              #局部
+              #clone-on-start: true
+            local:
+              pattern: local*
+              uri: file:/home/configsvc/config-repo
+
+
+
+
+
+

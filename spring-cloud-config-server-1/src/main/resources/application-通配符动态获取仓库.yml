@@ -1,0 +1,18 @@
+server:
+  port: 7417
+spring:
+  application:
+    name: conig-server-1
+  #配置微服务的配置仓库
+  cloud:
+    config:
+      server:
+        git:
+          #启动时报异常;config-repo为仓库名称
+          #访问方式: http://localhost:7417/config-repo-dev.yml -->application-dev.yml,此处找不到找application.yml
+          #访问方式:http://localhost:7417/config-repo-default.yml-->application.yml
+          uri: https://github.com/mynameiscuining/{application}
+
+
+
+
