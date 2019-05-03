@@ -22,7 +22,6 @@
         <module>spring-cloud-sidecar-1</module>
         <module>spring-cloud-simulation-non-jvm</module>
         <module>spring-cloud-config-server-1</module>
-        <module>spring-cloud-config-repo-1</module>
     </modules>
     <parent>
         <!-- springboot -->
