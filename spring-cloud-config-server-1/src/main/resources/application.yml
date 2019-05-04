@@ -9,3 +9,7 @@ spring:
       server:
         git:
           uri: https://github.com/mynameiscuining/config-repo
+  security:
+    user:
+      password: rootadmin
+      name: root

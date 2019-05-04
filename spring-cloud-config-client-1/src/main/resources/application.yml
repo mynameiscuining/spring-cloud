@@ -1,14 +1,5 @@
 server:
   port: 7418
-spring:
-  application:
-    # 名字和仓库的配置文件名字一致
-    name: conig-server-1
-  cloud:
-    config:
-      #配置服务
-      uri: http://localhost:7417
-      profile: dev
-      label: master
+
 
 

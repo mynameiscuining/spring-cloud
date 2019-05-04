@@ -5,6 +5,10 @@ spring:
   cloud:
     config:
       #配置服务
-      uri: http://localhost:7417
+      #方式一
+      uri: http://root:rootadmin@localhost:7417
+      #方式二
+      #username:
+      #password:
       profile: dev
       label: master
