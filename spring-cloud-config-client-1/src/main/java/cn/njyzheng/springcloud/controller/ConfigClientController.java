@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 //用作刷新配置属性,手动刷新访问http://localhost:7418/actuator/refresh 访问method为post
+//@RefreshScope不建议和@Configuration同时注解使用
 @RefreshScope
 /**
  * For a Spring Boot Actuator application, some additional management endpoints are available. You can use:
