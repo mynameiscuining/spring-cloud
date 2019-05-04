@@ -1,0 +1,14 @@
+spring:
+  application:
+    # 名字和仓库的配置文件名字一致
+    name: conig-client-1
+  cloud:
+    config:
+      #配置服务
+      #方式一
+      uri: http://root:rootadmin@localhost:7417
+      #方式二
+      #username:
+      #password:
+      profile: dev
+      label: master

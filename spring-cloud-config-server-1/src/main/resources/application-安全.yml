@@ -1,0 +1,15 @@
+server:
+  port: 7417
+spring:
+  application:
+    name: conig-server-1
+  #配置微服务的配置仓库
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/mynameiscuining/config-repo
+  security:
+    user:
+      password: rootadmin
+      name: root
