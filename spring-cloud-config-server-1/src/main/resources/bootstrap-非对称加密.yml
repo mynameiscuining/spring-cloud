@@ -1,0 +1,32 @@
+#非对称加密
+#keytool -genkeypair -alias mytestkey -keyalg RSA \
+#  -keypass changeme -keystore server.jks -storepass letmein
+
+#-alias <alias>                  要处理的条目的别名
+# -keyalg <keyalg>                密钥算法名称
+# -keysize <keysize>              密钥位大小
+# -sigalg <sigalg>                签名算法名称
+# -destalias <destalias>          目标别名
+# -dname <dname>                  唯一判别名
+# -startdate <startdate>          证书有效期开始日期/时间
+# -ext <value>                    X.509 扩展
+# -validity <valDays>             有效天数
+# -keypass <arg>                  密钥口令
+# -keystore <keystore>            密钥库名称
+# -storepass <arg>                密钥库口令
+# -storetype <storetype>          密钥库类型
+# -providername <providername>    提供方名称
+# -providerclass <providerclass>  提供方类名
+# -providerarg <arg>              提供方参数
+# -providerpath <pathlist>        提供方类路径
+# -v                              详细输出
+# -protected                      通过受保护的机制的口令
+
+#加密属性: curl  http://localhost:7417/encrypt -d foobar
+#解密属性: 解密如对称解密url
+encrypt:
+  keyStore:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme
