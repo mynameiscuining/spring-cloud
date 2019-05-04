@@ -1,0 +1,9 @@
+#key必须写在bootstrap.yml否则报错
+#对称加密
+encrypt:
+  #加密因子
+  #加密:curl  http://localhost:7417/encrypt -d foobar
+  #解密:curl localhost:7417/decrypt -d a9a0d9b5934e59c0980beb8e4658c5f18855db4b7681d0c10dd77d754a8dc01d
+  #配置仓库文件yml访问会自动解密配置形式格式password: '{cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ'
+  #properties不用加单引号,否则不解密
+  key: foo

@@ -9,10 +9,3 @@ spring:
       server:
         git:
           uri: https://github.com/mynameiscuining/config-repo
-          #子路径
-          search-paths: foo,bar
-          #searchPaths: '{application}'
-
-
-
-
