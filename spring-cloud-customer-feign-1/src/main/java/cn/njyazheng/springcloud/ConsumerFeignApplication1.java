@@ -11,6 +11,8 @@ import org.springframework.context.annotation.FilterType;
 /**
  * feign是一个声明式的web客户端
  * feign 整合了eureka和ribbon
+ *重试默认是开启的
+ * feign默认是通过自己包下的Retryer进行重试配置,默认是5次
  */
 @SpringBootApplication
 //开启feign

@@ -2,7 +2,7 @@ server:
   port: 7405
 logging:
   level:
-     root: info
+     root: debug
      #feign日志,设置日志级别
      cn.njyazheng.springcloud.feign: DEBUG
 
@@ -16,13 +16,13 @@ eureka:
     #Setting it to a value of less than 30 speeds up the process of getting clients connected to other services.
     #In production, it is probably better to stick with the default,
     #because of internal computations in the server that make assumptions about the lease renewal
-    lease-renewal-interval-in-seconds: 5
+    lease-renewal-interval-in-seconds: 30
     # 表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。
     # 默认为90秒
     # 如果该值太大，则很可能将流量转发过去的时候，该instance已经不存活了。
     # 如果该值设置太小了，则instance则很可能因为临时的网络抖动而被摘除掉。
     # 该值至少应该大于 leaseRenewalIntervalInSeconds
-    lease-expiration-duration-in-seconds: 15
+    lease-expiration-duration-in-seconds: 90
     #使用IP进行服务注册
     prefer-ip-address: true
     #显示IP
